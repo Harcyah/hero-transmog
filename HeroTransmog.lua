@@ -1,9 +1,9 @@
 
 local function Debug(tooltip, key, value)
 	if (value == nil) then
-		tooltip:AddLine(key .. " : nil", 0.0, 0.5, 0.3)
+		tooltip:AddLine(key .. ' : nil', 0.0, 0.5, 0.3)
 	else
-		tooltip:AddLine(key .. " : " ..  tostring(value), 0.0, 0.5, 0.3)
+		tooltip:AddLine(key .. ' : ' ..  tostring(value), 0.0, 0.5, 0.3)
 	end
 end
 
@@ -28,8 +28,8 @@ local function GameTooltip_OnTooltipSetItem(tooltip)
 		return;
 	end
 
-	local itemString = string.match(link, "item[%-?%d:]+")
-	local _, itemId = strsplit(":", itemString)
+	local itemString = string.match(link, 'item[%-?%d:]+')
+	local _, itemId = strsplit(':', itemString)
 	if (not itemId) then
 		return;
 	end
@@ -46,13 +46,13 @@ local function GameTooltip_OnTooltipSetItem(tooltip)
 
 	-- See https://wow.gamepedia.com/API_C_TransmogCollection.GetSourceInfo
 	local sourceInfo = C_TransmogCollection.GetSourceInfo(sourceId)
-	-- Debug(tooltip, "sourceInfo/isCollected", sourceInfo.isCollected)
+	-- Debug(tooltip, 'sourceInfo/isCollected', sourceInfo.isCollected)
 
 	local playerHasTransmog = C_TransmogCollection.PlayerHasTransmog(itemId)
-	-- Debug(tooltip,"playerHasTransmog", playerHasTransmog)
+	-- Debug(tooltip,'playerHasTransmog', playerHasTransmog)
 
 	local isAppearanceKnown = IsAppearanceKnown(appearanceId)
-	-- Debug(tooltip,"isAppearanceKnown", isAppearanceKnown)
+	-- Debug(tooltip,'isAppearanceKnown', isAppearanceKnown)
 end
 
-GameTooltip:HookScript("OnTooltipSetItem", GameTooltip_OnTooltipSetItem)
+GameTooltip:HookScript('OnTooltipSetItem', GameTooltip_OnTooltipSetItem)
